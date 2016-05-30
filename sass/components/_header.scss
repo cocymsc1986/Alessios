@@ -1,0 +1,59 @@
+header {
+    z-index: 9999;
+    
+    .header-wrapper {
+        font-weight: 700;
+        min-height: 180px;
+        transition: height 0.25s ease;
+        
+        .header-opening {
+            color: $white;
+            font-size: 1.2em;
+            margin-top: 0.8em;
+            text-shadow: 1px 1px 2px #009343;
+            transition: all 0.25s ease;
+        }
+        
+        .header-contact {
+            color: $white;
+            font-size: 1.9em;
+            text-align: right;
+            margin-top: 0.8em;
+            text-shadow: 1px 1px 2px #009343;
+            transition: all 0.25s ease;
+            
+            a {
+                color: $white;
+                
+                &:visited {
+                    color: $white;   
+                }
+            }
+            
+            @media (max-width: 767px) {
+                font-size: 1.7em;
+            }
+        }
+    }
+    
+    &.sticky {
+        position: fixed;
+        transition: all 0.25s ease;
+        z-index: 2;
+        
+        .header-wrapper {
+            min-height: 0;
+            //transition: all 0.25s ease;
+            
+            .header-opening {
+                opacity: 0;
+                transition: all 0.25s ease;
+            }
+
+            .header-contact {
+                opacity: 0;
+                transition: all 0.25s ease;
+            }
+        }
+    }
+}

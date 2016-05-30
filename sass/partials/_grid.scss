@@ -1,0 +1,383 @@
+@import "susy";
+
+// breakpoints
+// 960 - desktop
+// 767 - tablet
+// 640 - small tablet
+// 480 - phone
+
+$susy: (
+  columns: 12,
+  gutters: 1/4,
+  math: fluid,
+  output: float,
+  gutter-position: after   
+);
+
+body {
+    margin: 0;
+    
+    .body-wrapper {
+        @include container($susy);
+    }
+}
+
+header {
+    @include span(12);
+    
+    .header-wrapper {
+        @include span(8 of 12);
+        margin-left: span(2 of 12);
+        
+        @media (max-width: 960px) {
+            @include span(12 of 12);
+            width: 95%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+        }
+        
+        .header-opening, .header-contact {
+            @include span(4 of 12);
+            
+            @media (max-width: 670px) {
+                display: none;   
+            }
+        }
+        
+        .logo {
+            @include span (4 of 12);
+        }
+        
+        .header-contact {
+            @include span(4 of 12 last);   
+        }
+    }
+}
+
+nav:not(.mobile-menu-control) {
+    @include span (12);
+    height: 4em;
+    
+    ul {
+        @include span(8 of 12);
+        margin-left: span(2 of 12);
+        padding: 0;
+        
+        @media (max-width: 960px) {
+            @include span(12 of 12);
+            width: 95%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+        }
+        
+        li {
+            @include span(2 of 12);
+            display: inline;
+            
+            @media (max-width: 670px) {
+                display: none;  
+            }
+            
+            &:last-child {
+                @include span(2 of 12 last);   
+            }
+            
+            &.nav-logo {
+                @include span(4 of 12);  
+                
+                @media (max-width: 670px) {
+                    display: block !important;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    @include span(12);
+    
+    .scroll-down {
+        @include span(8 of 12);
+        
+        @media(max-width: 960px) {
+            width: 95%;
+            margin-left: 0%;
+            margin-right: 0%;
+        }
+
+        @media(max-width: 670px) {
+            display: none;
+        }
+    }
+        
+    section {
+        @include span(12);
+        
+        padding-top: 2.5em;
+        padding-bottom: 2em;
+        
+        @media (max-width: 640px) {
+            padding-top: 0em;
+        }
+        
+        .section-container {
+            @include span(8 of 12);
+            margin-left: span(2 of 12);
+            
+            @media (max-width: 960px) {
+                @include span(12 of 12);
+                
+                width: 95%;
+                margin: 2em 2.5%;
+            }
+            
+            .food-info-item {
+                @include span(3 of 9);
+                
+                &:last-child {
+                    @include span(3 of 9 last);
+                }
+                
+                @media (max-width: 640px) {
+                    @include span(9 of 9);
+                    
+                    &:last-child {
+                        @include span(9 of 9 last);
+                    }
+                }
+            }
+        }
+        
+        &.main-image-container {
+            @include span(12);
+            margin-left: 0;
+        }
+    }
+    
+    .opening-info {
+        @include span(4 of 8);
+        
+        @media (max-width: 640px) {
+            @include span(8 of 8);
+        }
+    }
+    
+    .address-container {
+        @include span(4 of 8 last);
+        
+        @media (max-width: 640px) {
+            @include span(8 of 8);
+        }
+    }
+}
+
+.contact {
+    .content {
+        section {
+            &.map-full-width {
+                margin-top: 2em;
+                padding-top: 0;
+                padding-bottom: 0;
+                
+                .map {
+                    margin-bottom: -3px;   
+                }
+            }
+            
+            &.contact-info {
+                @include span(8 of 8 last);
+                border-top-color: $black; 
+                
+                .opening-info {
+                    @include span(8 of 8 last);
+                }
+            }
+        }
+    }
+}
+
+.meal-deal {
+    &.open {
+        .meal-deal-bg {
+            z-index: 3;
+            transition: opacity 0.5s ease;
+            opacity: 0.8;
+            top: 0;
+        }
+        
+        .meal-deal-content {
+            position: fixed;
+            z-index: 4;
+            transition: all 0.5s ease;
+        }
+    }
+    
+    .meal-deal-bg {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        opacity: 0;
+        z-index: -10;
+        transition: opacity 0.5s ease;
+    }
+    
+    .meal-deal-content {
+        position: fixed;
+        left: -100%;
+        transition: all 0.5s ease;
+    }
+    
+    @media(max-width: 670px) {
+        display: none;   
+    }
+}
+
+footer {
+    @include span(12);
+       
+    padding-top: 2em;
+    padding-bottom: 2em;
+    
+    .footer {
+        @include span(8 of 12);
+        margin-left: span(2 of 12);
+        
+        ul {
+            margin-left: 0;
+            padding-left: 0;
+            
+            li {
+                @media (max-width: 640px) {
+                    width: 100%;
+                    font-size: 2em;
+                }
+            }
+        }
+    }
+}
+
+// menu table
+
+#menu {
+    .menu-container {
+        .menu {
+            .menu-option {
+                .menu-option-content {
+                    table.menu-table {
+                        width: 100%;
+
+                        thead {
+                            tr {
+                                width: 100%;
+
+                                td {
+                                    &.td-10-percent {
+                                        width: 10%;   
+                                    }
+
+                                    &.td-15-percent {
+                                        width: 15%;
+                                        
+                                        @media (max-width: 480px) {
+                                            width: 20%;
+                                            font-size: 1em;
+                                        }
+                                    }
+
+                                    &.td-40-percent {
+                                        width: 40%;   
+                                    }
+
+                                    &.td-50-percent {
+                                        width: 50%;
+                                    }
+
+                                    &.td-55-percent {
+                                        width: 55%;
+                                        
+                                        @media (max-width: 480px) {
+                                            width: 40%;
+                                            font-size: 1em;
+                                        }
+                                    }
+
+                                    &.td-70-percent {
+                                        width: 70%;   
+                                    }
+                                }
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                width: 100%;
+                                
+                                @media (max-width: 480px) {
+                                    font-size: 0.875em;   
+                                }
+
+                                td {
+                                    &.td-10-percent {
+                                        width: 10%;   
+                                    }
+
+                                    &.td-15-percent {
+                                        width: 15%;
+                                        
+                                        @media (max-width: 480px) {
+                                            width: 20%;
+                                            font-size: 1em;
+                                        }
+                                    }
+
+                                    &.td-40-percent {
+                                        width: 40%;   
+                                    }
+
+                                    &.td-50-percent {
+                                        width: 50%;   
+                                    }
+
+                                    &.td-55-percent {
+                                        width: 55%;
+                                        
+                                        @media (max-width: 480px) {
+                                            width: 40%;
+                                            font-size: 1em;
+                                        }
+                                    }
+
+                                    &.td-70-percent {
+                                        width: 70%;   
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// About us
+
+.about-content {
+    > div {
+           
+    }
+    
+    img {
+        width: 100%;
+        
+        @media (max-width: 960px) {
+            width: 105%;
+            margin-left: -2.5%;
+        }
+    }
+    
+    p {
+        font-size: 1.2em;
+    }
+}
